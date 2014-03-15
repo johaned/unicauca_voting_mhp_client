@@ -103,6 +103,7 @@ public class Dashboard extends HComponent implements Scene, HKeyListener, HActio
 		if(votingCore.getUserName()== null || votingCore.getUserName().equals("")){
 			try {
 				this.userName = getUserName();
+				votingCore.setUserName(this.userName);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -184,13 +185,19 @@ public class Dashboard extends HComponent implements Scene, HKeyListener, HActio
 	public void keyPressed(KeyEvent key) {
 		System.out.println("key code: "+ key.getKeyCode());
 		switch (key.getKeyCode()) {
-			case VK_UP:
-				setLogMsg("name");
+			case VK_GREEN:
+				change_scene("Vote");
 				break;
-			case VK_DOWN:
-				setLogMsg("password");
+			case VK_YELLOW:
+				change_scene("Results");
 				break;
-			case VK_RIGHT:
+			case VK_RED:
+				cleaner();
+				try {
+					votingCore.destroyXlet(true);
+				} catch (XletStateChangeException e) {
+					e.printStackTrace();
+				}
 				break;
 			default:
 				break;
@@ -208,13 +215,18 @@ public class Dashboard extends HComponent implements Scene, HKeyListener, HActio
 		
 		switch (buttonLabel.charAt(0)) {
 		case 'V':
-			
+			change_scene("Vote");
 			break;
 		case 'C':
 			
 			break;
 		case 'E':
-			
+			cleaner();
+			try {
+				votingCore.destroyXlet(true);
+			} catch (XletStateChangeException e) {
+				e.printStackTrace();
+			}
 			break;
 		default:
 			break;
