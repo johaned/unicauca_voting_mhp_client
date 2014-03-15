@@ -251,7 +251,7 @@ public class SignIn extends HComponent implements Scene, HKeyListener, HActionLi
 			case 200:
 				setLogMsg("session accepted");
 				votingCore.setSessionToken(objectResponse.get("token").toString());
-				//change_scene("Dashboard");
+				change_scene("Dashboard");
 				break;
 			case 401:
 				setLogMsg("session rejected");
