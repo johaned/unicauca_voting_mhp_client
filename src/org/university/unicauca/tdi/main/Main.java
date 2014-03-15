@@ -9,7 +9,6 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		System.out.println("INFO: Deploying App XLET Practice 4 " +System.currentTimeMillis());
-
 	}
 
 }
