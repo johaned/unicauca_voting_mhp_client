@@ -218,7 +218,7 @@ public class Dashboard extends HComponent implements Scene, HKeyListener, HActio
 			change_scene("Vote");
 			break;
 		case 'C':
-			
+			change_scene("Results");
 			break;
 		case 'E':
 			cleaner();
