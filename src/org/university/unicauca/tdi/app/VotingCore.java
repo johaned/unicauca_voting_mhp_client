@@ -5,6 +5,12 @@ package org.university.unicauca.tdi.app;
  * 
  */
 import java.awt.Rectangle;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javax.tv.xlet.Xlet;
 import javax.tv.xlet.XletContext;
@@ -13,37 +19,49 @@ import javax.tv.xlet.XletStateChangeException;
 import org.havi.ui.HScene;
 import org.havi.ui.HSceneFactory;
 import org.havi.ui.HSceneTemplate;
+import org.university.unicauca.tdi.model.Layout;
 import org.university.unicauca.tdi.model.Scene;
 
 public class VotingCore implements Xlet{
 	private XletContext context;
 	private HScene scene;
-	private String sceneName = "HS_welcome";
+	private String sceneName = "SignIn";
 	private HSceneFactory factory;
 	private HSceneTemplate hst;
 	private Scene sceneInterface;
+	
+	//application variables
+	private String sessionToken;
+	private String userName;
 
-	public void destroyXlet(boolean arg0) throws XletStateChangeException {
-		// TODO Auto-generated method stub
-		
-	}
+	public void destroyXlet(boolean arg0) throws XletStateChangeException {}
 
-	public void initXlet(XletContext arg0) throws XletStateChangeException {
+	public void initXlet(XletContext context) throws XletStateChangeException {
 		this.context = context;
-		createScene();	
+		createScene();
+		
+		// It gets server IP address from resource file
+		try {
+			FileInputStream fstream = new FileInputStream("org/university/unicauca/tdi/res/ip.txt");
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			Layout.server_domain=br.readLine();
+			in.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void pauseXlet() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pauseXlet() {}
 
 	public void startXlet() throws XletStateChangeException {
 		setLogMsg("Start XLET");
 		System.out.println("RUNNING...");
 		//it cleans all scene's components
 		scene.removeAll();
-		setLogMsg("OPENING =>" + sceneName);
+		setLogMsg("OPENING => " + sceneName);
 		//it  dynamically loads and deploys  scene
 		loadScene(sceneName);
 		scene.repaint();
@@ -65,10 +83,10 @@ public class VotingCore implements Xlet{
 		// this.requestFocus();
 	}
 	
-	private void loadScene(String scene) {
+	private void loadScene(String sceneName) {
 		try {
 			//it takes a class reference associated with scene class
-			Class referenceScene = Class.forName("org.university.unicauca.tdi.scene."+ scene);
+			Class referenceScene = Class.forName("org.university.unicauca.tdi.scene."+ sceneName);
 			if (referenceScene == null)
 				System.out.println("null class");
 			//Scene is instantiated
@@ -99,7 +117,20 @@ public class VotingCore implements Xlet{
 	public HScene getScene() {
 		return scene;
 	}
-	
-	
 
+	public String getSessionToken() {
+		return sessionToken;
+	}
+
+	public void setSessionToken(String sessionToken) {
+		this.sessionToken = sessionToken;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}	
 }
