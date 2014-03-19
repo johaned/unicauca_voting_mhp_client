@@ -29,6 +29,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.university.unicauca.tdi.app.VotingCore;
 import org.university.unicauca.tdi.conn.RestClient;
+import org.university.unicauca.tdi.control.VideoManager;
 import org.university.unicauca.tdi.model.Layout;
 import org.university.unicauca.tdi.model.Scene;
 
@@ -67,6 +68,7 @@ public class Results extends HComponent implements Scene, HKeyListener, HActionL
 
 	public void initializer(VotingCore votingCore) {
 		this.ctx = votingCore.getContext();
+		VideoManager.setSizeToApp();
 		this.scene = votingCore.getScene();
 		this.votingCore = votingCore;
 		rc = new RestClient((String)this.ctx.getXletProperty("dvb.org.id"));
