@@ -106,13 +106,13 @@ public class Vote extends HComponent implements Scene, HKeyListener, HActionList
 			e.printStackTrace();
 		}
 		
-		questionLabel = new HStaticText(QUESTION_LABEL+" "+this.question+"", 10, 450, 400, 40);
+		questionLabel = new HStaticText(QUESTION_LABEL+" "+this.question+"", 48, 450, 400, 40);
 		questionLabel.setBordersEnabled(false);
 		questionLabel.setHorizontalAlignment(HVisible.HALIGN_LEFT);
 		questionLabel.setForeground(Color.white);
 		questionLabel.setFont(new Font("Tiresias", Font.BOLD, 24));
 
-		yesButton = new HTextButton(YES_BUTTON_LABEL, 30, 493, 100, 40);
+		yesButton = new HTextButton(YES_BUTTON_LABEL, 41, 493, 100, 40);
 		yesButton.setTextContent(YES_BUTTON_LABEL, HVisible.FOCUSED_STATE);
 		yesButton.setBordersEnabled(true);
 		yesButton.setForeground(Color.white);
@@ -120,7 +120,7 @@ public class Vote extends HComponent implements Scene, HKeyListener, HActionList
 		yesButton.setBackgroundMode(HVisible.BACKGROUND_FILL);
 		yesButton.setFont(new Font("Tiresias", Font.BOLD, 24));
 		
-		noButton = new HTextButton(NO_BUTTON_LABEL, 150, 493, 100, 40);
+		noButton = new HTextButton(NO_BUTTON_LABEL, 161, 493, 100, 40);
 		noButton.setTextContent(NO_BUTTON_LABEL, HVisible.FOCUSED_STATE);
 		noButton.setBordersEnabled(true);
 		noButton.setForeground(Color.black);
@@ -128,7 +128,7 @@ public class Vote extends HComponent implements Scene, HKeyListener, HActionList
 		noButton.setBackgroundMode(HVisible.BACKGROUND_FILL);
 		noButton.setFont(new Font("Tiresias", Font.BOLD, 24));
 		
-		backButton = new HTextButton(BACK_BUTTON_LABEL, 590, 493, 100, 40);
+		backButton = new HTextButton(BACK_BUTTON_LABEL, 580, 493, 100, 40);
 		backButton.setTextContent(BACK_BUTTON_LABEL, HVisible.FOCUSED_STATE);
 		backButton.setBordersEnabled(true);
 		backButton.setForeground(Color.white);
@@ -162,7 +162,7 @@ public class Vote extends HComponent implements Scene, HKeyListener, HActionList
 	
 	public void paint(Graphics graphics){
 		graphics.setColor(new DVBColor(255, 255, 255, 255));
-		graphics.drawLine(0, 448, 720, 448);
+		graphics.drawLine(0, 418, 720, 418);
 	}
 
 	private void change_scene(String sceneName) {

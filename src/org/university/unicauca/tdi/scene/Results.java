@@ -117,13 +117,13 @@ public class Results extends HComponent implements Scene, HKeyListener, HActionL
 			this.results = "No results";
 		}
 		
-		resultsLabel = new HStaticText(RESULTS_LABEL+" "+this.results+"", 10, 450, 670, 40);
+		resultsLabel = new HStaticText(RESULTS_LABEL+" "+this.results+"", 48, 420, 670, 40);
 		resultsLabel.setBordersEnabled(false);
 		resultsLabel.setHorizontalAlignment(HVisible.HALIGN_LEFT);
 		resultsLabel.setForeground(Color.white);
 		resultsLabel.setFont(new Font("Tiresias", Font.BOLD, 24));
 		
-		backButton = new HTextButton(BACK_BUTTON_LABEL, 590, 493, 100, 40);
+		backButton = new HTextButton(BACK_BUTTON_LABEL, 580, 463, 100, 40);
 		backButton.setTextContent(BACK_BUTTON_LABEL, HVisible.FOCUSED_STATE);
 		backButton.setBordersEnabled(true);
 		backButton.setForeground(Color.white);
@@ -147,13 +147,13 @@ public class Results extends HComponent implements Scene, HKeyListener, HActionL
 	
 	public void paint(Graphics graphics){
 		graphics.setColor(new DVBColor(255, 255, 255, 255));
-		graphics.drawLine(0, 448, 720, 448);
+		graphics.drawLine(0, 418, 720, 418);
 		
 		if(hasResults){
 			graphics.setColor(Color.green);		
-	        graphics.fillRoundRect(30, 485, Math.round(this.maxWidth*this.affirmativeResponses), 40, 30, 30);
+	        graphics.fillRoundRect(60, 455, Math.round(this.maxWidth*this.affirmativeResponses), 40, 28, 28);
 	        graphics.setColor(Color.red);
-	        graphics.fillRoundRect(30, 530, Math.round(this.maxWidth*this.negativeResponses), 40, 28, 28);	
+	        graphics.fillRoundRect(60, 500, Math.round(this.maxWidth*this.negativeResponses), 40, 28, 28);	
 		}
 	}
 

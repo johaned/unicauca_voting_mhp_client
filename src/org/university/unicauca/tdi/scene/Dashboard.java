@@ -111,13 +111,13 @@ public class Dashboard extends HComponent implements Scene, HKeyListener, HActio
 			this.userName = votingCore.getUserName();	
 		}
 		
-		welcomeLabel = new HStaticText(WELCOME_LABEL+" "+this.userName+"!", 10, 450, 400, 40);
+		welcomeLabel = new HStaticText(WELCOME_LABEL+" "+this.userName+"!", 60, 420, 400, 40);
 		welcomeLabel.setBordersEnabled(false);
 		welcomeLabel.setHorizontalAlignment(HVisible.HALIGN_LEFT);
 		welcomeLabel.setForeground(Color.white);
 		welcomeLabel.setFont(new Font("Tiresias", Font.BOLD, 24));
 
-		voteButton = new HTextButton(VOTE_BUTTON_LABEL, 30, 493, 200, 40);
+		voteButton = new HTextButton(VOTE_BUTTON_LABEL, 48, 463, 200, 40);
 		voteButton.setTextContent(VOTE_BUTTON_LABEL, HVisible.FOCUSED_STATE);
 		voteButton.setBordersEnabled(true);
 		voteButton.setForeground(Color.white);
@@ -125,7 +125,7 @@ public class Dashboard extends HComponent implements Scene, HKeyListener, HActio
 		voteButton.setBackgroundMode(HVisible.BACKGROUND_FILL);
 		voteButton.setFont(new Font("Tiresias", Font.BOLD, 24));
 		
-		checkButton = new HTextButton(CHECK_BUTTON_LABEL, 260, 493, 200, 40);
+		checkButton = new HTextButton(CHECK_BUTTON_LABEL, 259, 463, 200, 40);
 		checkButton.setTextContent(CHECK_BUTTON_LABEL, HVisible.FOCUSED_STATE);
 		checkButton.setBordersEnabled(true);
 		checkButton.setForeground(Color.black);
@@ -133,7 +133,7 @@ public class Dashboard extends HComponent implements Scene, HKeyListener, HActio
 		checkButton.setBackgroundMode(HVisible.BACKGROUND_FILL);
 		checkButton.setFont(new Font("Tiresias", Font.BOLD, 24));
 		
-		exitButton = new HTextButton(EXIT_BUTTON_LABEL, 490, 493, 200, 40);
+		exitButton = new HTextButton(EXIT_BUTTON_LABEL, 470, 463, 200, 40);
 		exitButton.setTextContent(EXIT_BUTTON_LABEL, HVisible.FOCUSED_STATE);
 		exitButton.setBordersEnabled(true);
 		exitButton.setForeground(Color.white);
@@ -167,7 +167,7 @@ public class Dashboard extends HComponent implements Scene, HKeyListener, HActio
 	
 	public void paint(Graphics graphics){
 		graphics.setColor(new DVBColor(255, 255, 255, 255));
-		graphics.drawLine(0, 448, 720, 448);
+		graphics.drawLine(0, 418, 720, 418);
 	}
 
 	private void change_scene(String sceneName) {

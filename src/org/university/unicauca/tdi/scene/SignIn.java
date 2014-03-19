@@ -102,18 +102,20 @@ public class SignIn extends HComponent implements Scene, HKeyListener, HActionLi
 		scene.setBackgroundMode(HScene.BACKGROUND_FILL);
 		scene.setBackground(Color.black);
 
-		msgLabel = new HStaticText(MSG_SIGNIN_LABEL, 10, 450, 100, 40);
+		msgLabel = new HStaticText(MSG_SIGNIN_LABEL, 50, 420, 100, 40);
+		msgLabel.setHorizontalAlignment(HVisible.HALIGN_LEFT);
 		msgLabel.setBordersEnabled(false);
 		msgLabel.setForeground(Color.white);
 		msgLabel.setFont(new Font("Tiresias", Font.BOLD, 24));
 
-		nameLabel = new HStaticText(NAME_SIGIN_LABEL, 10, 490, 100, 40);
+		nameLabel = new HStaticText(NAME_SIGIN_LABEL, 50, 460, 100, 40);
+		nameLabel.setHorizontalAlignment(HVisible.HALIGN_LEFT);
 		nameLabel.setBordersEnabled(false);
 		nameLabel.setForeground(Color.white);
 		nameLabel.setFont(new Font("Tiresias", Font.BOLD, 24));
 
 		nameTextfield = new HSinglelineEntry();
-		nameTextfield.setBounds(110, 490, 300, 38);
+		nameTextfield.setBounds(160, 460, 300, 38);
 		nameTextfield.setEnabled(true);
 		nameTextfield.setTextContent("", HVisible.NORMAL_STATE);
 		nameTextfield.setBordersEnabled(true);
@@ -125,13 +127,14 @@ public class SignIn extends HComponent implements Scene, HKeyListener, HActionLi
 		nameTextfield.setEditMode(true);
 		nameTextfield.setHorizontalAlignment(HVisible.HALIGN_LEFT);
 		
-		pwdLabel = new HStaticText(PWD_SIGIN_LABEL, 10, 530, 100, 40);
+		pwdLabel = new HStaticText(PWD_SIGIN_LABEL, 50, 500, 100, 40);
+		pwdLabel.setHorizontalAlignment(HVisible.HALIGN_LEFT);
 		pwdLabel.setBordersEnabled(false);
 		pwdLabel.setForeground(Color.white);
 		pwdLabel.setFont(new Font("Tiresias", Font.BOLD, 24));
 
 		passwordTextfield = new HSinglelineEntry();
-		passwordTextfield.setBounds(110, 530, 300, 38);
+		passwordTextfield.setBounds(160, 500, 300, 38);
 		passwordTextfield.setEnabled(true);
 		passwordTextfield.setTextContent("", HVisible.NORMAL_STATE);
 		passwordTextfield.setBordersEnabled(true);
@@ -143,7 +146,7 @@ public class SignIn extends HComponent implements Scene, HKeyListener, HActionLi
 		passwordTextfield.setEditMode(true);
 		passwordTextfield.setHorizontalAlignment(HVisible.HALIGN_LEFT);
 
-		signinButton = new HTextButton(SIGNIN_BUTTON_LABEL, 450, 530, 100, 40);
+		signinButton = new HTextButton(SIGNIN_BUTTON_LABEL, 510, 500, 100, 40);
 		signinButton.setTextContent(SIGNIN_BUTTON_LABEL, HVisible.FOCUSED_STATE);
 		signinButton.setBordersEnabled(true);
 		signinButton.setForeground(Color.white);
@@ -179,7 +182,7 @@ public class SignIn extends HComponent implements Scene, HKeyListener, HActionLi
 	
 	public void paint(Graphics graphics){
 		graphics.setColor(new DVBColor(255, 255, 255, 255));
-		graphics.drawLine(0, 448, 720, 448);
+		graphics.drawLine(0, 418, 720, 418);
 	}
 
 	private void change_scene(String sceneName) {
@@ -223,7 +226,7 @@ public class SignIn extends HComponent implements Scene, HKeyListener, HActionLi
 		try {
 			if(!hasFlashMsg){
 				setLogMsg("first time");
-				flashLabel = new HStaticText(SIGNIN_LOADING_LABEL, 110, 450, 320, 40);
+				flashLabel = new HStaticText(SIGNIN_LOADING_LABEL, 160, 450, 320, 40);
 				flashLabel.setForeground(Color.blue);
 				flashLabel.setBordersEnabled(false);
 				flashLabel.setFont(new Font("Tiresias", Font.BOLD, 24));	
