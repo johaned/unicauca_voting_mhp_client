@@ -12,6 +12,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import javax.media.Player;
+import javax.tv.service.selection.InsufficientResourcesException;
+import javax.tv.service.selection.ServiceContentHandler;
+import javax.tv.service.selection.ServiceContext;
+import javax.tv.service.selection.ServiceContextException;
+import javax.tv.service.selection.ServiceContextFactory;
+import javax.tv.service.selection.ServiceMediaHandler;
 import javax.tv.xlet.Xlet;
 import javax.tv.xlet.XletContext;
 import javax.tv.xlet.XletStateChangeException;
@@ -19,6 +26,7 @@ import javax.tv.xlet.XletStateChangeException;
 import org.havi.ui.HScene;
 import org.havi.ui.HSceneFactory;
 import org.havi.ui.HSceneTemplate;
+import org.university.unicauca.tdi.control.VideoManager;
 import org.university.unicauca.tdi.model.Layout;
 import org.university.unicauca.tdi.model.Scene;
 
@@ -29,6 +37,8 @@ public class VotingCore implements Xlet{
 	private HSceneFactory factory;
 	private HSceneTemplate hst;
 	private Scene sceneInterface;
+	//Video Manger Stuff
+	public Player player;
 	
 	//application variables
 	private String sessionToken;
@@ -38,8 +48,6 @@ public class VotingCore implements Xlet{
 
 	public void initXlet(XletContext context) throws XletStateChangeException {
 		this.context = context;
-		createScene();
-		
 		// It gets server IP address from resource file
 		try {
 			FileInputStream fstream = new FileInputStream("org/university/unicauca/tdi/res/ip.txt");
@@ -52,6 +60,12 @@ public class VotingCore implements Xlet{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		// it obtains the tv service
+		getService();
+		// it configures broadcast video
+		VideoManager.configurar(this);
+		VideoManager.setOriginalSize();
+		createScene();
 	}
 
 	public void pauseXlet() {}
@@ -100,6 +114,30 @@ public class VotingCore implements Xlet{
 	
 	public void setLogMsg(String msg) {
 		System.out.println("LOG: " + msg);
+	}
+	
+	public void getService(){
+		try {
+			ServiceContext serviceContext = null;
+			try{
+				serviceContext = ServiceContextFactory.getInstance().getServiceContext(context);
+			}catch (InsufficientResourcesException e) {
+				e.printStackTrace();
+			}
+			
+			if(serviceContext!=null){
+				ServiceContentHandler[] handlers = serviceContext.getServiceContentHandlers();
+				if (serviceContext != null){
+					for(int i=0;i<handlers.length;i++){
+						if (handlers[i] instanceof ServiceMediaHandler) {
+							player= (Player) serviceContext.getServiceContentHandlers()[i];
+						}
+					}
+				}
+			}
+		}catch (ServiceContextException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getSceneName() {
